@@ -144,3 +144,27 @@ function oceanwp_remove_checkout_script(){
     wp_dequeue_script( 'wc-checkout' );
 }
 add_action( 'wp_enqueue_scripts', 'oceanwp_remove_checkout_script' );
+
+/**
+ * Меняем лого и ссылку на странице логина
+ */
+function m14_custom_login_logo() { ?>
+    <style>
+        #login h1 a, .login h1 a {
+            background-image: url('/wp-content/uploads/2023/03/logo-head.png') !important;
+            background-size: contain !important;
+            width: 100%;
+            height: 64px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'm14_custom_login_logo' );
+
+function m14_custom_login_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'm14_custom_login_url' );
+function m14_login_logo_url_redirect() {
+    return 'https://m14.onrg.ru/';
+}
+add_filter( 'login_headertext', 'm14_login_logo_url_redirect' );

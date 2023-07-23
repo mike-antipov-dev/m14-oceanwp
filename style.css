@@ -203,6 +203,10 @@ body .cart-custom .wcmenucart-details.count {
     right: -14px;
 }
 
+body .cart-custom.user-login {
+    margin-top: 18px;
+}
+
 #site-header-inner .mobile-menu i {
     opacity: 0;
 }

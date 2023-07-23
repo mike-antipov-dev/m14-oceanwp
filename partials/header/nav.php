@@ -212,9 +212,13 @@ if ( ! empty( $template ) && ! defined( 'OCEANWP_NAV_SHORTCODE_DONE' ) ) {
 			?>
 			</div><!-- #site-navigation-wrap -->
 
+		<div class="cart-custom user-login">
+			<a href="<?php echo wp_login_url() ?>" class="href"><img src="/wp-content/uploads/2023/06/user-login.svg" alt=""></a>
+		</div>
+
 		<div class="cart-custom">
 			<img src="/wp-content/uploads/2023/03/cart-icon.png" alt="">
-			<?php oceanwp_mobile_cart_icon(); ?>									
+			<?php oceanwp_mobile_cart_icon(); ?>
 		</div>
 
 
