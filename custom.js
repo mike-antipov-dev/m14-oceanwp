@@ -1,6 +1,5 @@
 jQuery(document).ready(function(){
 	
-	
 	jQuery(function() {
 		var ul = jQuery( '.products li:nth-child(1) .product-inner .woo-entry-inner' ), li = ul.children();
 		li.slice(0,2).wrapAll( '<div class="first-li" />');
@@ -16,6 +15,9 @@ jQuery(document).ready(function(){
 		li.slice(0,2).wrapAll( '<div class="first-li" />');
 	});
 
+    jQuery('.wpcf7-validates-as-tel').inputmask("+7 (999) 999-99-99");
+    jQuery('#billing_phone').inputmask("+7 (999) 999-99-99");
+    jQuery('#shipping_phone').inputmask("+7 (999) 999-99-99");
 
     /**
      * Перевод мм в дюймы на странице товара

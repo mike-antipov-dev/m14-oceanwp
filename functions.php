@@ -133,7 +133,8 @@ add_filter( 'woocommerce_checkout_fields', 'oceanwp_change_checkout_fields' );
  * Загружаем кастомный JS дочерней темы
  */
 function oceanwp_enqueue_child_script() {
-	wp_enqueue_script( 'custom', get_stylesheet_directory_uri() . '/custom.js', array ( 'jquery' ), '0.1.1', true );
+    wp_enqueue_script( 'mask', get_stylesheet_directory_uri() . '/inputmask/dist/jquery.inputmask.min.js', array ( 'jquery' ), '1', true );
+    wp_enqueue_script( 'custom', get_stylesheet_directory_uri() . '/custom.js', array ( 'mask' ), '0.1.2', true );
 }
 add_action( 'wp_enqueue_scripts', 'oceanwp_enqueue_child_script' );
 
