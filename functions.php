@@ -169,3 +169,32 @@ function m14_login_logo_url_redirect() {
     return 'https://m14.onrg.ru/';
 }
 add_filter( 'login_headertext', 'm14_login_logo_url_redirect' );
+
+/**
+ * Добавялем метку ЕРП
+ */
+add_action( 'show_user_profile', 'show_custom_user_field' );
+add_action( 'edit_user_profile', 'show_custom_user_field' );
+
+function show_custom_user_field( $user ) {
+    if(current_user_can('administrator')) {
+        ?>
+        <h3>Доп. поля</h3>
+        <table class="form-table">
+            <tr>
+                <th><label for="erp_login">Метка ЕРП</label></th>
+                <td><input type="text" name="erp_login" id="erp_login" value="<?php echo esc_attr( get_the_author_meta( 'erp_login', $user->ID )); ?>" class="regular-text" /></td>
+            </tr>
+        </table>
+        <?php
+    }
+}
+
+add_action( 'personal_options_update', 'save_user_erp_field' );
+add_action( 'edit_user_profile_update', 'save_user_erp_field' );
+
+function save_user_erp_field( $user_id ) {
+    if(current_user_can('administrator')) {
+        update_user_meta( $user_id, 'erp_login', $_POST['erp_login'] );
+    }
+}
