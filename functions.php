@@ -198,3 +198,11 @@ function save_user_erp_field( $user_id ) {
         update_user_meta( $user_id, 'erp_login', $_POST['erp_login'] );
     }
 }
+
+add_action( 'init', 'stop_heartbeat', 1 );
+function stop_heartbeat() {
+    wp_deregister_script('heartbeat');
+}
+
+// Показываем ценник для вариативных товаров всегда
+add_filter('woocommerce_show_variation_price', function() { return TRUE;});
